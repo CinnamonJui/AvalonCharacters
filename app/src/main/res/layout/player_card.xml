@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#50000000"
+        android:minWidth="175dp">
+
+    <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="User name"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/user_name" />
+
+    <Spinner
+            android:id="@+id/spinner_identity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_name"
+            android:layout_centerHorizontal="true"
+            android:elevation="8sp"
+            android:entries="@array/avalon_identities"
+            android:padding="8sp"
+            android:scrollbarSize="@dimen/identity" />
+
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="btn_positive">@android:color/holo_blue_light</color>
+    <color name="btn_negtive">#FF0000</color>
+    <color name="btn_neutral">#666666</color>
+</resources>

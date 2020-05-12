@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Avalon Characters</string>
+    <!-- Game Phases -->
+    <string-array name="game_phases">
+        <item>Team Building</item>
+        <item>Vote Team</item>
+        <item>Mission</item>
+    </string-array>
+
+    <string-array name="avalon_identities">
+        <item>Unknown</item>
+        <!-- Good -->
+        <item>Merlin</item>
+        <item>Percival</item>
+        <item>Good</item>
+        <!-- Evil -->
+        <item>Mordred</item>
+        <item>Morgana</item>
+        <item>Assassin</item>
+        <item>Oberon</item>
+        <item>Evil</item>
+    </string-array>
+
+    <!-- Avalon Characters name -->
+    <!-- Good side -->
+    <string name="avalon_Merlin">Merlin</string>
+    <string name="avalon_Merlin_self_intro">Knows evil, must remain hidden</string>
+
+    <string name="avalon_Percival">Percival</string>
+    <string name="avalon_Percival_self_intro">Knows Merlin</string>
+
+    <string name="avalon_loyal_servant_of_Artbur">Loyal Servant of Artbur</string>
+
+    <!-- Evil side -->
+    <string name="avalon_Mordred">Mordred</string>
+    <string name="avalon_Mordred_self_intro">Unknown to Merlin</string>
+
+    <string name="avalon_Morgana">Morgana</string>
+    <string name="avalon_Morgana_self_intro">Appear as Merlin</string>
+
+    <string name="avalon_Assassin">Assassin</string>
+
+    <string name="avalon_Oberon">Oberon</string>
+    <string name="avalon_Oberon_self_intro">Unknown to Evil</string>
+
+    <string name="avalon_minions_of_Mordred">Minions of Mordred</string>
+
+</resources>
