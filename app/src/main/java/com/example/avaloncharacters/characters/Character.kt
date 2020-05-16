@@ -2,7 +2,6 @@ package com.example.avaloncharacters.characters
 
 import android.content.Context
 import android.graphics.Bitmap
-import com.example.avaloncharacters.R
 
 abstract class Character(context: Context) {
     /**

@@ -30,8 +30,8 @@
                     android:layout_gravity="center"
                     android:indeterminate="false"
                     android:max="100"
-                    android:rotation="-90"
-                    android:progressDrawable="@drawable/count_down_circular" />
+                    android:progressDrawable="@drawable/count_down_circular"
+                    android:rotation="-90" />
         </FrameLayout>
 
         <TextView
@@ -49,6 +49,7 @@
 
     <LinearLayout
             android:id="@+id/content"
+            style="?android:attr/buttonBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_below="@id/title"
@@ -58,6 +59,7 @@
 
         <Button
                 android:id="@+id/btnPositive"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -71,6 +73,7 @@
 
         <Button
                 android:id="@+id/btnNegative"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"

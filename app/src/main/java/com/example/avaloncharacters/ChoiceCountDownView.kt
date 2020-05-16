@@ -17,7 +17,7 @@ class ChoiceCountDownView : FrameLayout {
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
-    private val GAME_PHASES: Array<String> = context.resources.getStringArray(R.array.game_phases)
+    private val GAMEPHASES: Array<String> = context.resources.getStringArray(R.array.game_phases)
     private lateinit var player: Player
     private var choiceType: Int = 0
     fun setPlayer(p: Player) {
@@ -36,12 +36,13 @@ class ChoiceCountDownView : FrameLayout {
                     Toast.makeText(context, "Only evil side can let mission fail!", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
-                it.setBackgroundResource(R.color.btn_negtive)
+                it.setBackgroundResource(R.color.btn_negative)
                 btnPositive.setBackgroundResource(R.color.btn_neutral)
                 confirm.isEnabled = true
             }
-
             this.visibility = View.INVISIBLE
+            startCountDown(MISSION, 8)
+
         }
     }
 
@@ -51,7 +52,7 @@ class ChoiceCountDownView : FrameLayout {
 
         countDownProgressBar.progress = 100
         countDownSeconds.text = seconds.toString()
-        titleText.text = GAME_PHASES[type]
+        titleText.text = GAMEPHASES[type]
         confirm.isEnabled = false
 
         visibility = View.VISIBLE
