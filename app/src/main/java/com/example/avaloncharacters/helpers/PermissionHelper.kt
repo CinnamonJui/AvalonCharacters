@@ -1,4 +1,4 @@
-package com.example.avaloncharacters
+package com.example.avaloncharacters.helpers
 
 import android.Manifest
 import android.content.pm.PackageManager

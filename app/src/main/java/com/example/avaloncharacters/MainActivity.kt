@@ -2,6 +2,7 @@ package com.example.avaloncharacters
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.avaloncharacters.helpers.PermissionHelper
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +15,5 @@ class MainActivity : AppCompatActivity() {
             commitNow()
             // This fragment will be auto destroyed
         }
-
     }
 }

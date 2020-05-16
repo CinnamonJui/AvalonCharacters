@@ -1,17 +1,18 @@
-package com.example.avaloncharacters
+package com.example.avaloncharacters.helpers
 
 import android.content.Context
 import android.os.CountDownTimer
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
-import android.widget.FrameLayout
+import android.widget.RelativeLayout
+import com.example.avaloncharacters.R
 import com.example.avaloncharacters.characters.Player
 import com.example.avaloncharacters.characters.goodside.GoodSide
 import kotlinx.android.synthetic.main.choice_count_down_view.view.*
 
 
-class ChoiceCountDownView : FrameLayout {
+class ChoiceCountDownView : RelativeLayout {
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
