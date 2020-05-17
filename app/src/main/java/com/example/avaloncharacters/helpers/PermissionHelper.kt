@@ -30,7 +30,7 @@ class PermissionHelper : Fragment() {
         if (!allPermissionsGranted)
             requestPermissions(PERMISSIONS_REQUIRED, PERMISSIONS_REQUEST_CODE)
         else
-            activity!!.supportFragmentManager.beginTransaction().remove(this).commitAllowingStateLoss()
+            requireActivity().supportFragmentManager.beginTransaction().remove(this).commitAllowingStateLoss()
     }
 
     override fun onRequestPermissionsResult(
@@ -54,7 +54,8 @@ class PermissionHelper : Fragment() {
             ).show()
             requireActivity().finish()
         }
-        activity!!.supportFragmentManager.beginTransaction().remove(this).commitAllowingStateLoss()
+        requireActivity().supportFragmentManager.beginTransaction().remove(this)
+            .commitAllowingStateLoss()
     }
 
     override fun onDestroy() {
