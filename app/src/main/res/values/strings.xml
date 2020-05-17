@@ -1,5 +1,17 @@
 <resources>
-    <string name="app_name">Avalon Characters</string>
+    <string name="app_name">Avalon</string>
+
+    <string name="create_room">Create</string>
+    <string name="enter_room">Enter room</string>
+    <string name="title_rule">Rule</string>
+    <string name="rule_explanation">BlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlah
+        BlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlah
+    BlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlah
+    </string>
+    <string name="enter_room_number">Enter room number</string>
+    <string name="new_room_number">New room</string>
+
+
     <!-- Game Phases -->
     <string-array name="game_phases">
         <item>Team Building</item>
