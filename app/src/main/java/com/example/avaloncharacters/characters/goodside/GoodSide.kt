@@ -8,11 +8,15 @@ import com.example.avaloncharacters.characters.Character
 
 open class GoodSide(context: Context) : Character(context) {
     override val characterName: String by lazy {
-        context.getString(R.string.avalon_loyal_servant_of_Artbur)
+        context.getString(R.string.avalon_Loyal_servant_of_Arthur)
     }
     override val characterSelfIntro: String = ""
     override val characterImage: Bitmap
         get() = TODO("not implemented")
+}
+
+class LoyalServantOfArthur(context: Context) : GoodSide(context) {
+
 }
 
 class Merlin(context: Context) : GoodSide(context) {

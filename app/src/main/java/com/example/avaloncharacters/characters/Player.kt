@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 
 
 class Player(
-    private val playerName: String,
+    val name: String,
     private val profileBitmap: Bitmap? = null
 ) {
     lateinit var character: Character

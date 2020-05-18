@@ -7,11 +7,15 @@ import com.example.avaloncharacters.characters.Character
 
 open class EvilSide(context: Context) : Character(context) {
     override val characterName: String by lazy {
-        context.getString(R.string.avalon_minions_of_Mordred)
+        context.getString(R.string.avalon_Minion_of_Mordred)
     }
     override val characterSelfIntro: String = ""
     override val characterImage: Bitmap
         get() = TODO("not implemented")
+}
+
+class MinionOfMordred(context: Context) : EvilSide(context) {
+
 }
 
 class Assassin(context: Context) : EvilSide(context) {
@@ -19,7 +23,7 @@ class Assassin(context: Context) : EvilSide(context) {
         context.getString(R.string.avalon_Assassin)
     }
     override val characterSelfIntro: String by lazy {
-        context.getString(R.string.avalon_minions_of_Mordred)
+        context.getString(R.string.avalon_Minion_of_Mordred)
     }
 }
 

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Avalon</string>
 
+    <!-- Game Title -->
     <string name="create_room">Create</string>
     <string name="enter_room">Enter room</string>
     <string name="title_rule">Rule</string>
@@ -34,6 +35,18 @@
     </string-array>
 
     <!-- Avalon Characters name -->
+    <string-array name="avalon_characters">
+        <!-- Good -->
+        <item>Merlin</item>
+        <item>Percival</item>
+        <item>Loyal Servant of Arthur</item>
+        <!-- Evil -->
+        <item>Mordred</item>
+        <item>Morgana</item>
+        <item>Assassin</item>
+        <item>Oberon</item>
+        <item>Minion of Mordred</item>
+    </string-array>
     <!-- Good side -->
     <string name="avalon_Merlin">Merlin</string>
     <string name="avalon_Merlin_self_intro">Knows evil, must remain hidden</string>
@@ -41,7 +54,7 @@
     <string name="avalon_Percival">Percival</string>
     <string name="avalon_Percival_self_intro">Knows Merlin</string>
 
-    <string name="avalon_loyal_servant_of_Artbur">Loyal Servant of Artbur</string>
+    <string name="avalon_Loyal_servant_of_Arthur">Loyal Servant of Arthur</string>
 
     <!-- Evil side -->
     <string name="avalon_Mordred">Mordred</string>
@@ -55,7 +68,7 @@
     <string name="avalon_Oberon">Oberon</string>
     <string name="avalon_Oberon_self_intro">Unknown to Evil</string>
 
-    <string name="avalon_minions_of_Mordred">Minions of Mordred</string>
+    <string name="avalon_Minion_of_Mordred">Minion of Mordred</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
