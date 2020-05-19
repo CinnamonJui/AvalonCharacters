@@ -2,7 +2,7 @@
 <resources>
     <dimen name="title">72sp</dimen>
     <dimen name="btn_title">24sp</dimen>
-
+    <dimen name="room_number">24sp</dimen>
     <dimen name="user_name">32sp</dimen>
     <dimen name="identity">24sp</dimen>
 </resources>

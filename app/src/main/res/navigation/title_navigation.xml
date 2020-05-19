@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/title_navigation"
+        app:startDestination="@id/permissionHelper">
+
+    <fragment
+            android:id="@+id/game_title"
+            android:name="com.example.avaloncharacters.title.Title"
+            android:label="fragment_title"
+            tools:layout="@layout/fragment_title">
+        <action
+                android:id="@+id/action_game_title_to_waitPlayerEnter"
+                app:destination="@id/waitPlayerEnter" />
+    </fragment>
+    <fragment
+            android:id="@+id/waitPlayerEnter"
+            android:name="com.example.avaloncharacters.title.WaitPlayerEnter"
+            android:label="wait_player_enter_fragment"
+            tools:layout="@layout/wait_player_enter_fragment">
+        <argument
+                android:name="roomNumber"
+                app:argType="long"
+                app:nullable="false" />
+    </fragment>
+    <fragment
+            android:id="@+id/permissionHelper"
+            android:name="com.example.avaloncharacters.helpers.PermissionHelper"
+            android:label="PermissionHelper">
+        <action
+                android:id="@+id/action_permissionHelper_to_game_title"
+                app:destination="@id/game_title"
+                app:popUpTo="@id/permissionHelper"
+                app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

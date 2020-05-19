@@ -3,7 +3,9 @@
 
     <!-- Game Title -->
     <string name="create_room">Create</string>
+    <string name="cancel_room">Cancel</string>
     <string name="enter_room">Enter room</string>
+    <string name="hint_player_name">Player name (8 characters at most)</string>
     <string name="title_rule">Rule</string>
     <string name="rule_explanation">BlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlah
         BlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlahBlah
@@ -11,6 +13,13 @@
     </string>
     <string name="enter_room_number">Enter room number</string>
     <string name="new_room_number">New room</string>
+    <string name="room_number">Room number: %1$s</string>
+    <string name="waiting_player">Waiting for players</string>
+    <string name="play_number">%1$d / 5</string>
+
+    <!-- Nearby connection -->
+    <string name="endpoint_found">Find player: %1$s</string>
+    <string name="ask_if_start_connecting">Start </string>
 
 
     <!-- Game Phases -->

@@ -26,3 +26,7 @@ val p = Player(/* player name = */ name).apply {
 cd.setPlayer(p)
 cd.startCountDown(ChoiceCountDownView.MISSION, /* seconds = */ 480, callback)
 ```
+
+### WaitPlayerEnter.kt
+
+![WP](./gifs/WaitPlayerEnter.gif)

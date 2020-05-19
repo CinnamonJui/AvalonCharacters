@@ -13,7 +13,10 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
+import com.example.avaloncharacters.ApplicationConnectivity
 import com.example.avaloncharacters.R
+import com.example.avaloncharacters.characters.Player
 import kotlinx.android.synthetic.main.fragment_title.*
 
 
@@ -64,10 +67,18 @@ class Title : Fragment() {
             setTitle(getString(R.string.enter_room_number))
             setView(view)
             setPositiveButton("Enter Room") { dialog, _ ->
+                val playerName = textPlayerName.text.toString()
                 if (editText.text.length != 6) {
                     dialog.dismiss()
                     Toast.makeText(context, "6 digit required", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
+                } else if (playerName.isEmpty()) {
+                    dialog.dismiss()
+                    Toast.makeText(context, "Player name can't be empty", Toast.LENGTH_SHORT).show()
+                    return@setPositiveButton
+                }
+                (requireActivity().application as ApplicationConnectivity).run {
+                    setPlayer(Player(playerName))
                 }
                 TODO("Start listening this room number")
             }
@@ -79,12 +90,24 @@ class Title : Fragment() {
             setTitle(getString(R.string.new_room_number))
             setView(view)
             setPositiveButton(getString(R.string.create_room)) { dialog, _ ->
+                val playerName = textPlayerName.text.toString()
                 if (editText.text.length != 6) {
                     dialog.dismiss()
                     Toast.makeText(context, "6 digit required", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
+                } else if (playerName.isEmpty()) {
+                    dialog.dismiss()
+                    Toast.makeText(context, "Player name can't be empty", Toast.LENGTH_SHORT).show()
+                    return@setPositiveButton
                 }
-                TODO("Start advertising this room number")
+                (requireActivity().application as ApplicationConnectivity).run {
+                    setPlayer(Player(playerName))
+                }
+                val roomNumber = editText.text.toString().toLong()
+                val action =
+                    TitleDirections.actionGameTitleToWaitPlayerEnter(roomNumber)
+                NavHostFragment.findNavController(this@Title)
+                    .navigate(action)
             }
             setCancelable(true)
         }.create()

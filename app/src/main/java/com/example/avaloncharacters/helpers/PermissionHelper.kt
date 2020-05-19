@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 
 private const val PERMISSIONS_REQUEST_CODE = 10
 private val PERMISSIONS_REQUIRED = arrayOf(
@@ -30,7 +31,8 @@ class PermissionHelper : Fragment() {
         if (!allPermissionsGranted)
             requestPermissions(PERMISSIONS_REQUIRED, PERMISSIONS_REQUEST_CODE)
         else
-            requireActivity().supportFragmentManager.beginTransaction().remove(this).commitAllowingStateLoss()
+            NavHostFragment.findNavController(this)
+                .navigate(PermissionHelperDirections.actionPermissionHelperToGameTitle())
     }
 
     override fun onRequestPermissionsResult(
@@ -40,8 +42,10 @@ class PermissionHelper : Fragment() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (requestCode != PERMISSIONS_REQUEST_CODE)
+        if (requestCode != PERMISSIONS_REQUEST_CODE) {
+            Log.wtf("WTF", "Why do we have this request code?")
             return
+        }
 
         val hasDenial = grantResults.any { result ->
             result == PackageManager.PERMISSION_DENIED
@@ -50,12 +54,12 @@ class PermissionHelper : Fragment() {
             Toast.makeText(
                 requireContext(),
                 "We need these permissions for connecting to nearby devices!",
-                Toast.LENGTH_SHORT
+                Toast.LENGTH_LONG
             ).show()
             requireActivity().finish()
         }
-        requireActivity().supportFragmentManager.beginTransaction().remove(this)
-            .commitAllowingStateLoss()
+        NavHostFragment.findNavController(this)
+            .navigate(PermissionHelperDirections.actionPermissionHelperToGameTitle())
     }
 
     override fun onDestroy() {
