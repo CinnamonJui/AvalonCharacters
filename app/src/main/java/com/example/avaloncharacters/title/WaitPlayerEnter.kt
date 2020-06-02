@@ -84,8 +84,8 @@ class LoadingTextView(context: Context, attrs: AttributeSet) :
 
     private val loadingText = context.getString(R.string.waiting_player)
     private fun next(): String {
-        currentDotIdx += 1
-        return dotsArray[currentDotIdx % dotsArray.size]
+        currentDotIdx = (currentDotIdx + 1) % dotsArray.size
+        return dotsArray[currentDotIdx]
     }
 
     private val mHandler = WeakReference(Handler(context.mainLooper))
