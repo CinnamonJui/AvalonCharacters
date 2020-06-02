@@ -20,7 +20,7 @@ class CharacterView : ConstraintLayout{
     }
 
     // change character color and number
-    fun setCharacterIdentit(num: Int, type: Int) {
+    fun setCharacterIdentity(num: Int, type: Int) {
 
         character_circle.setText(num.toString())
 
