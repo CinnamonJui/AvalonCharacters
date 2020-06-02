@@ -31,7 +31,7 @@ class WaitPlayerEnter : Fragment() {
             onBackPressedDispatcher.addCallback(this) {
                 (requireActivity().application as ApplicationConnectivity).stopAdvertising()
                 NavHostFragment.findNavController(this@WaitPlayerEnter).popBackStack()
-                // WTF, Why do I have to manually call this bullshit again?
+                // Why do I have to manually call this method again?
             }
         }
     }
