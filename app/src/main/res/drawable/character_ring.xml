@@ -5,7 +5,7 @@
         <shape android:shape="oval">
             <stroke
                     android:width="10dp"
-                    android:color="#FFD306" />
+                    android:color="@color/ring_isChecked" />
         </shape>
     </item>
 
@@ -13,7 +13,7 @@
         <shape android:shape="oval">
             <stroke
                     android:width="10dp"
-                    android:color="#9D9D9D" />
+                    android:color="@color/ring_unChecked" />
         </shape>
     </item>
 
