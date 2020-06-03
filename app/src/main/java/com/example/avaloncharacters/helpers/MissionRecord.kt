@@ -19,7 +19,7 @@ class MissionRecord:RelativeLayout {
         mission_title.text="" // mission 1,2,3...
         mission_detail.text="" //details of mission: the player who assign mission and assigned player
         mission_result.text="" //pass or not pass
-        mission_result.setBackgroundColor(getResources().getColor(R.color.backgroud_default))
+        mission_result.setBackgroundColor(context.getColor(R.color.backgroud_default))
         player1.text = ""
         player2.text = ""
         player3.text = ""
