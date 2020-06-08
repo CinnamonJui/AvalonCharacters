@@ -82,4 +82,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+
+    <string name="mission1">Mission 1</string>
+    <string name="mission2">Mission 2</string>
+    <string name="mission3">Mission 3</string>
+    <string name="mission4">Mission 4</string>
+    <string name="mission5">Mission 5</string>
+
+
 </resources>
