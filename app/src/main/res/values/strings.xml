@@ -90,4 +90,7 @@
     <string name="mission5">Mission 5</string>
 
 
+    <!--  Mission Record  -->
+    <string name="mission_title">任務 %1$d</string>
+    <string name="round_name">回合 %1$d</string>
 </resources>
