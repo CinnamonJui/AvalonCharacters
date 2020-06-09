@@ -21,7 +21,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/character_circle"
-            android:text="2"
+            android:text=""
             android:textSize="65sp"
             android:gravity="center_vertical|center"
             app:layout_constraintLeft_toLeftOf="parent"
