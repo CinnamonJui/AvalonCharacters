@@ -4,7 +4,6 @@ import android.app.Application
 
 class ApplicationConnectivity : Application() {
     companion object {
-        const val TAG = "ApplicationConnectivity"
-        const val ROOMNUMBER_LENGTH = 6
+        private val TAG = ApplicationConnectivity::class::simpleName.get()!!
     }
 }

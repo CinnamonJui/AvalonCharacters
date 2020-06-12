@@ -3,23 +3,42 @@ package com.example.avaloncharacters.connection
 import android.app.AlertDialog
 import android.content.Context
 import android.util.Log
+import com.example.avaloncharacters.characters.Player
 import com.google.android.gms.nearby.connection.*
 
 
 class ServerSideConnection(context: Context) : Connection(context) {
+    // EndpointId to Player
+    val mConnectedDeviceMap = HashMap<String, Player?>(5)
+
     override val mConnectionLifecycleCallback = object : ConnectionLifecycleCallback() {
         override fun onConnectionResult(
             endpointId: String,
             connectionResolution: ConnectionResolution
         ) {
-            TODO("not implemented")
+            when (connectionResolution.status.statusCode) {
+                ConnectionsStatusCodes.SUCCESS -> {
+                    mConnectedDeviceMap[endpointId] = null
+                }
+                ConnectionsStatusCodes.STATUS_CONNECTION_REJECTED -> {
+                    Log.i(TAG, connectionResolution.status.statusMessage ?: "STATUS_CONNECTION_REJECTED")
+                }
+                else -> Log.wtf(
+                    TAG,
+                    "onConnectionResult: ${connectionResolution.status.statusMessage}"
+                )
+            }
         }
 
         override fun onDisconnected(endpointId: String) {
+            mConnectedDeviceMap.clear()
             TODO("End Game")
         }
 
         override fun onConnectionInitiated(endpointId: String, info: ConnectionInfo) {
+            if (mConnectedDeviceMap.containsKey(endpointId))
+                mConnectionsClient.rejectConnection(endpointId)
+
             AlertDialog.Builder(context).apply {
                 setCancelable(false)
                 setTitle("Accept incoming connection from ${info.endpointName}, $endpointId")
@@ -29,7 +48,7 @@ class ServerSideConnection(context: Context) : Connection(context) {
                 )
 
                 //Request connection
-                setPositiveButton("Connect") { _, _ ->
+                setPositiveButton("Accept") { _, _ ->
                     mConnectionsClient.acceptConnection(
                         endpointId,
                         mPayloadCallback
@@ -41,7 +60,6 @@ class ServerSideConnection(context: Context) : Connection(context) {
             }.show()
         }
     }
-
     override val mPayloadCallback = object : PayloadCallback() {
         override fun onPayloadReceived(endpointId: String, payload: Payload) {
             TODO("not implemented, may be I should leave all hard works to Mrs. Hong?")
@@ -70,8 +88,11 @@ class ServerSideConnection(context: Context) : Connection(context) {
     }
 
     companion object {
-        private val advertisingOptions = AdvertisingOptions.Builder().apply {
-            setStrategy(Strategy.P2P_STAR)
-        }.build()
+        private val TAG = ServerSideConnection::class::simpleName.get()!!
+        private val advertisingOptions: AdvertisingOptions by lazy {
+            AdvertisingOptions.Builder().apply {
+                setStrategy(Strategy.P2P_STAR)
+            }.build()
+        }
     }
 }

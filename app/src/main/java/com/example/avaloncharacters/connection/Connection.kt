@@ -13,15 +13,19 @@ abstract class Connection(context: Context) {
     protected val packageName: String = context.packageName
     protected var roomNumber: Long = -1
         set(value) {
-            if (value.toString().length != ApplicationConnectivity.ROOMNUMBER_LENGTH)
+            if (value.toString().length != ROOMNUMBER_LENGTH)
                 throw IllegalArgumentException(
-                    "Length of room number must be equal to ${ApplicationConnectivity.ROOMNUMBER_LENGTH}"
+                    "Length of room number must be equal to $ROOMNUMBER_LENGTH"
                 )
             field = value
         }
 
     abstract val mConnectionLifecycleCallback: ConnectionLifecycleCallback
     abstract val mPayloadCallback: PayloadCallback
+
+    val isServer by lazy {
+        this is ServerSideConnection
+    }
 
     companion object {
         const val TAG = "Connection"

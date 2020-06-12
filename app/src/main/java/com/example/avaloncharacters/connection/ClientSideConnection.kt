@@ -4,19 +4,10 @@ import android.app.AlertDialog
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
-import com.example.avaloncharacters.ApplicationConnectivity
 import com.google.android.gms.nearby.connection.*
 
 class ClientSideConnection(context: Context) : Connection(context) {
-    override val mPayloadCallback = object : PayloadCallback() {
-        override fun onPayloadReceived(endpointId: String, payload: Payload) {
-            TODO("not implemented, may be I should leave all hard works to Mrs. Hong?")
-        }
-
-        override fun onPayloadTransferUpdate(endpointId: String, update: PayloadTransferUpdate) {
-            TODO("not implemented")
-        }
-    }
+    private lateinit var serverEndpointId: String
     override val mConnectionLifecycleCallback = object : ConnectionLifecycleCallback() {
 
         override fun onConnectionResult(
@@ -24,15 +15,13 @@ class ClientSideConnection(context: Context) : Connection(context) {
             connectionResolution: ConnectionResolution
         ) {
             when (connectionResolution.status.statusCode) {
-                ConnectionsStatusCodes.STATUS_OK -> {
+                ConnectionsStatusCodes.SUCCESS -> {
+                    serverEndpointId = endpointId
                     Toast.makeText(
                         context,
                         "Successfully connected!",
                         Toast.LENGTH_SHORT
                     ).show()
-                }
-                ConnectionsStatusCodes.STATUS_ERROR -> {
-
                 }
                 ConnectionsStatusCodes.STATUS_CONNECTION_REJECTED -> {
                     Toast.makeText(
@@ -41,12 +30,10 @@ class ClientSideConnection(context: Context) : Connection(context) {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                else -> {
-                    Log.wtf(
-                        ApplicationConnectivity.TAG,
-                        "onConnectionResult: ${connectionResolution.status.statusMessage}"
-                    )
-                }
+                else -> Log.wtf(
+                    TAG,
+                    "onConnectionResult: ${connectionResolution.status.statusMessage}"
+                )
             }
         }
 
@@ -63,6 +50,16 @@ class ClientSideConnection(context: Context) : Connection(context) {
         }
     }
 
+    override val mPayloadCallback = object : PayloadCallback() {
+        override fun onPayloadReceived(endpointId: String, payload: Payload) {
+            TODO("not implemented, may be I should leave all hard works to Mrs. Hong?")
+        }
+
+        override fun onPayloadTransferUpdate(endpointId: String, update: PayloadTransferUpdate) {
+            TODO("not implemented")
+        }
+    }
+
     private val mEndpointDiscoveryCallback = object : EndpointDiscoveryCallback() {
         // Find server
         override fun onEndpointFound(endpointId: String, info: DiscoveredEndpointInfo) {
@@ -72,7 +69,7 @@ class ClientSideConnection(context: Context) : Connection(context) {
                 setMessage("Service ID: ${info.serviceId}")
 
                 //Request connection
-                setPositiveButton("Connect!") { _, _ ->
+                setPositiveButton("Accept") { _, _ ->
                     mConnectionsClient.requestConnection(
                         player.name,
                         endpointId,
@@ -88,9 +85,6 @@ class ClientSideConnection(context: Context) : Connection(context) {
 
     fun startDiscovery(roomNumber: Long) {
         this.roomNumber = roomNumber
-        val discoveryOptions = DiscoveryOptions.Builder().apply {
-            setStrategy(Strategy.P2P_STAR)
-        }.build()
 
         Log.i(TAG, "Start discovering, room number: $roomNumber")
         mConnectionsClient.startDiscovery(
@@ -103,5 +97,14 @@ class ClientSideConnection(context: Context) : Connection(context) {
     fun stopDiscovering() {
         Log.i(TAG, "Stop discovering")
         mConnectionsClient.stopDiscovery()
+    }
+
+    companion object {
+        private val TAG = ClientSideConnection::class::simpleName.get()!!
+        private val discoveryOptions: DiscoveryOptions by lazy {
+            DiscoveryOptions.Builder().apply {
+                setStrategy(Strategy.P2P_STAR)
+            }.build()
+        }
     }
 }
