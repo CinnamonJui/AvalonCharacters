@@ -1,4 +1,4 @@
-package connection
+package com.example.avaloncharacters.connection
 
 import android.app.AlertDialog
 import android.content.Context

@@ -1,4 +1,4 @@
-package connection
+package com.example.avaloncharacters.connection
 
 import android.content.Context
 import com.example.avaloncharacters.ApplicationConnectivity
