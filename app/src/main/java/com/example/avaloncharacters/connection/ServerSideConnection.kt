@@ -9,7 +9,7 @@ import com.google.android.gms.nearby.connection.*
 
 class ServerSideConnection(context: Context) : Connection(context) {
     // EndpointId to Player
-    val mConnectedDeviceMap = HashMap<String, Player?>(5)
+    val mConnectedDeviceMap = HashMap<String, Player?>(4)
 
     override val mConnectionLifecycleCallback = object : ConnectionLifecycleCallback() {
         override fun onConnectionResult(
@@ -21,7 +21,10 @@ class ServerSideConnection(context: Context) : Connection(context) {
                     mConnectedDeviceMap[endpointId] = null
                 }
                 ConnectionsStatusCodes.STATUS_CONNECTION_REJECTED -> {
-                    Log.i(TAG, connectionResolution.status.statusMessage ?: "STATUS_CONNECTION_REJECTED")
+                    Log.i(
+                        TAG,
+                        connectionResolution.status.statusMessage ?: "STATUS_CONNECTION_REJECTED"
+                    )
                 }
                 else -> Log.wtf(
                     TAG,
@@ -32,6 +35,7 @@ class ServerSideConnection(context: Context) : Connection(context) {
 
         override fun onDisconnected(endpointId: String) {
             mConnectedDeviceMap.clear()
+            mConnectionsClient.stopAllEndpoints()
             TODO("End Game")
         }
 
@@ -66,11 +70,14 @@ class ServerSideConnection(context: Context) : Connection(context) {
         }
 
         override fun onPayloadTransferUpdate(endpointId: String, update: PayloadTransferUpdate) {
-            TODO("not implemented")
+            Log.i(
+                TAG, "$endpointId: Transferring..." +
+                        "\tprogress: ${update.bytesTransferred} / ${update.totalBytes}"
+            )
         }
     }
 
-    fun startAdvertising(roomNumber: Long) {
+    override fun startConnection(roomNumber: Long) {
         this.roomNumber = roomNumber
 
         Log.i(TAG, "Start advertising, room number: $roomNumber")
@@ -82,13 +89,9 @@ class ServerSideConnection(context: Context) : Connection(context) {
         )
     }
 
-    fun stopAdvertising() {
-        Log.i(TAG, "Stop advertising")
-        mConnectionsClient.stopAdvertising()
-    }
 
     companion object {
-        private val TAG = ServerSideConnection::class::simpleName.get()!!
+        internal val TAG = ServerSideConnection::class::simpleName.get()!!
         private val advertisingOptions: AdvertisingOptions by lazy {
             AdvertisingOptions.Builder().apply {
                 setStrategy(Strategy.P2P_STAR)

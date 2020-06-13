@@ -38,6 +38,7 @@ class ClientSideConnection(context: Context) : Connection(context) {
         }
 
         override fun onDisconnected(endpointId: String) {
+            mConnectionsClient.stopAllEndpoints()
             TODO("onDisconnected, end game")
         }
 
@@ -56,7 +57,10 @@ class ClientSideConnection(context: Context) : Connection(context) {
         }
 
         override fun onPayloadTransferUpdate(endpointId: String, update: PayloadTransferUpdate) {
-            TODO("not implemented")
+            Log.i(
+                TAG, "$endpointId: Transferring..." +
+                        "\tprogress: ${update.bytesTransferred} / ${update.totalBytes}"
+            )
         }
     }
 
@@ -80,10 +84,13 @@ class ClientSideConnection(context: Context) : Connection(context) {
             }.show()
         }
 
-        override fun onEndpointLost(endpointId: String) = TODO("End Game")
+        override fun onEndpointLost(endpointId: String) {
+            Log.i(TAG, "DiscoveryCallback: lost end point: $endpointId")
+            // TODO: decrease room number by 1
+        }
     }
 
-    fun startDiscovery(roomNumber: Long) {
+    override fun startConnection(roomNumber: Long) {
         this.roomNumber = roomNumber
 
         Log.i(TAG, "Start discovering, room number: $roomNumber")
@@ -94,13 +101,9 @@ class ClientSideConnection(context: Context) : Connection(context) {
         )
     }
 
-    fun stopDiscovering() {
-        Log.i(TAG, "Stop discovering")
-        mConnectionsClient.stopDiscovery()
-    }
 
     companion object {
-        private val TAG = ClientSideConnection::class::simpleName.get()!!
+        internal val TAG = ClientSideConnection::class::simpleName.get()!!
         private val discoveryOptions: DiscoveryOptions by lazy {
             DiscoveryOptions.Builder().apply {
                 setStrategy(Strategy.P2P_STAR)
