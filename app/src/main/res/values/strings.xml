@@ -13,7 +13,7 @@
     </string>
     <string name="enter_room_number">Enter room number</string>
     <string name="new_room_number">New room</string>
-    <string name="room_number">Room number: %1$s</string>
+    <string name="room_number">Room number: %1$d</string>
     <string name="waiting_player">Waiting for players</string>
     <string name="play_number">%1$d / 5</string>
 
