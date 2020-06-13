@@ -17,7 +17,6 @@ import androidx.navigation.fragment.navArgs
 import com.example.avaloncharacters.ApplicationConnectivity
 import com.example.avaloncharacters.R
 import kotlinx.android.synthetic.main.wait_player_enter_fragment.*
-import java.lang.NullPointerException
 import java.lang.ref.WeakReference
 import kotlin.math.ceil
 

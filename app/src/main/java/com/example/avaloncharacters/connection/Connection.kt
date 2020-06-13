@@ -8,10 +8,6 @@ import com.google.android.gms.nearby.Nearby
 import com.google.android.gms.nearby.connection.ConnectionLifecycleCallback
 import com.google.android.gms.nearby.connection.Payload
 import com.google.android.gms.nearby.connection.PayloadCallback
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import org.json.JSONObject
-import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 
 abstract class Connection(context: Context) {

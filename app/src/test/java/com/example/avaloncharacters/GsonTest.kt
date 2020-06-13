@@ -3,9 +3,6 @@ package com.example.avaloncharacters
 import com.google.gson.Gson
 import org.junit.Test
 
-import kotlin.collections.ArrayList
-import kotlin.collections.LinkedHashMap
-
 class GsonTest {
     private val defaultGson = Gson()
 

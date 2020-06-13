@@ -15,7 +15,6 @@ import com.example.avaloncharacters.connection.ClientSideConnection
 import com.example.avaloncharacters.connection.Connection
 import com.example.avaloncharacters.connection.ServerSideConnection
 import kotlinx.android.synthetic.main.fragment_title.*
-import kotlinx.android.synthetic.main.fragment_title.textRoomNumber
 
 
 class Title : Fragment() {
@@ -33,16 +32,14 @@ class Title : Fragment() {
         val playerName = textPlayerName.text.toString().takeIf {
             it.isNotEmpty()
         }
-
-        val roomNumber = textRoomNumber.text.toString().takeIf {
-            it.length == Connection.ROOMNUMBER_LENGTH
-        }?.toLong()
-
         if (playerName == null) {
             Toast.makeText(context, "Player name can't be empty", Toast.LENGTH_SHORT).show()
             return false
         }
 
+        val roomNumber = textRoomNumber.text.toString().takeIf {
+            it.length == Connection.ROOMNUMBER_LENGTH
+        }?.toLong()
         if (roomNumber == null) {
             Toast.makeText(context, "6 digit required", Toast.LENGTH_SHORT).show()
             return false
