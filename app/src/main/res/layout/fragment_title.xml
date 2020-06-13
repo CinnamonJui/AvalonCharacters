@@ -17,38 +17,60 @@
             app:layout_constraintLeft_toRightOf="@id/textTitle" />
 
     <com.google.android.material.textfield.TextInputLayout
+            app:layout_constraintVertical_bias="0.6"
+            android:id="@+id/textInputLayout"
+            app:layout_constraintVertical_chainStyle="packed"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="@string/hint_player_name"
             android:maxLength="8"
-            app:layout_constraintBottom_toTopOf="@id/btnEnterRoom"
+            app:layout_constraintBottom_toTopOf="@id/textInputLayout2"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textTitle">
+            app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textPlayerName"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Room number (6 digits)"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textRoomNumber"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_player_name" />
+                android:inputType="numberDecimal"
+                android:maxLength="6" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <TextView
+            app:layout_constraintVertical_bias="0.8"
             android:id="@+id/textTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
             android:textSize="@dimen/title"
-            app:layout_constraintBottom_toTopOf="@id/btnEnterRoom"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
 
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
     <Button
-
+            app:layout_constraintVertical_bias="0.3"
             android:id="@+id/btnNewRoom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,10 +78,9 @@
             android:textAllCaps="false"
             android:textSize="@dimen/btn_title"
             app:layout_constraintBottom_toBottomOf="parent"
-
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/btnEnterRoom"
-            app:layout_constraintTop_toBottomOf="@id/textTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
     <Button
             android:id="@+id/btnEnterRoom"
@@ -68,10 +89,9 @@
             android:text="@string/enter_room"
             android:textAllCaps="false"
             android:textSize="@dimen/btn_title"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/btnNewRoom"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textTitle" />
+            app:layout_constraintTop_toTopOf="@+id/btnNewRoom" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
